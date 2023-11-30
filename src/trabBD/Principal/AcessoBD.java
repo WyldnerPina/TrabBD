@@ -2,9 +2,9 @@ package trabBD.Principal;
 
 public class AcessoBD {
 	private static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3307/mercado?allowMultiQueries=true";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/mercado?allowMultiQueries=true";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "Root123";
 	
 //===========================================================================================	
 	public static final String getJdbcDriver() {

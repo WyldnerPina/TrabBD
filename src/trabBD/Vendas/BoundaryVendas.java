@@ -97,7 +97,7 @@ public class BoundaryVendas implements IPrincipal {
 			public TableCell<Vendas, Void> call(TableColumn<Vendas, Void> col) {
 				TableCell<Vendas, Void> tCell = new TableCell<>() {
 
-					final Button btnExcluir = new Button("Excluir");
+					final Button btnExcluir = new Button("Estornar");
 					{
 						btnExcluir.setOnAction(e -> {
 							Vendas p = table.getItems().get(getIndex());
