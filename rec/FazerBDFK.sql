@@ -14,13 +14,12 @@ Create table vendas(
 	idVendas bigint auto_increment primary key,
 	qntidade int,
 	dtVenda Date,
+    total numeric(10,2),
 	codProduto bigint,
-	total numeric(10,2),
-	nome varchar(30),
-	descricao varchar(80),
-	precoUnit numeric(10,2),
-	qntProd int not null
+    foreign key (codProduto) references produto (codProduto)		
 );
+
+
 
 
 delimiter //
@@ -43,13 +42,6 @@ end
 //
 delimiter ;
 
-
-update produto set qntProd=qntProd+2 where codProduto = 2;
-
-
-
-select * from produto;
-select * from vendas;
-
+delete from produto;
 
 

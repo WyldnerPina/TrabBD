@@ -30,26 +30,7 @@ public class CtrlProduto {
 		pDao = new ProdDAO();
 	}
 	
-	//---------------------------------------------------------------------------------
-	
-	/*public CtrlProduto(Long codProd, int qntProd) throws SQLException {
-		List<Produto> lst = pDao.procurarNome(nome.get());
-		System.out.println(lst.size());
 		
-		for(int i = 0; i < lst.size() ; i++) {
-			
-			if(codProd == lst.get(i).getCodProduto()) {
-				lst.get(i).getCodProduto();
-				
-				pDao.atualizar(codProd.get(), p);
-			}else {
-				
-			}			
-		}
-		
-	}*/
-	
-	
 	//---------------------------------------------------------------------------------
 	
 	public void limpar() {

@@ -1,13 +1,12 @@
-
 Create database Mercado;
 use Mercado;
-
+/*drop database mercado;*/
 Create table produto(
 	codProduto bigint primary key,
 	nome varchar(30),
 	descricao varchar(80),
 	precoUnit numeric(10,2),
-	qntProd int
+	qntProd int not null
 );
 
 
@@ -20,30 +19,31 @@ Create table vendas(
 	nome varchar(30),
 	descricao varchar(80),
 	precoUnit numeric(10,2),
-	qntProd int
+	qntProd int not null
 );
 
 
-SELECT *
-FROM VendProd vp
-INNER JOIN Vendas v ON vp.idVendas = v.idVendas
-INNER JOIN Produto p ON vp.codProduto = p.codProduto
-WHERE vp.idVendas = <id_da_venda_desejada>;
 
 
 
-SELECT vp.qntidade, vp.dtVenda, vp.hVenda,
-       vp.idVendas, vp.codProd,
-       v.total,
-       p.nome, p.descricao, p.precoUnit, p.qntProd
-FROM vendProd vp
-INNER JOIN venda v ON vp.idVendas = v.idVendas
-INNER JOIN produto p ON vp.codProd = p.codProd;
+delimiter //
+create procedure estornar(in codP bigint, in qnt int)
+begin
+	update produto set qntProd=qntProd+qnt where codProduto = codP;
+end
+//
+delimiter ;
 
 
+delimiter //
+create trigger estornarVenda
+after delete
+on vendas
+for each row
+begin	
+   call estornar(old.codProduto, old.qntProd);
+end
+//
+delimiter ;
 
-SELECT *
-FROM VendProd vp
-INNER JOIN Vendas v ON vp.idVendas = v.idVendas
-WHERE vp.idVendas = 23;
-
+delete from produto;
